@@ -1,12 +1,3 @@
-import { useState } from 'react'
-import { AuthContext } from './AuthContext'
-
-export function AuthProvider({ children }) {
-  const [token, setToken] = useState(() => localStorage.getItem('token') || null)
-  const [user, setUser] = useState(() => {
-    const savedUser = localStorage.getItem('user')
-    return savedUser ? JSON.parse(savedUser) : null
-  })
 
   const login = (newToken, userData = null) => {
     localStorage.setItem('token', newToken)
@@ -22,8 +13,8 @@ export function AuthProvider({ children }) {
     localStorage.removeItem('user')
     setToken(null)
     setUser(null)
-  }
 
+  }
   const value = {
     token,
     user,

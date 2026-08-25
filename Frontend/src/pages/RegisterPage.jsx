@@ -5,12 +5,7 @@ export function RegisterPage() {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const navigate = useNavigate()
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    // Placeholder register action
-    navigate('/login')
   }
 
   return (
@@ -50,8 +45,7 @@ export function RegisterPage() {
             style={{ width: '100%', padding: '0.5rem' }}
           />
         </div>
-        <button type="submit" style={{ padding: '0.5rem 1rem' }}>
-          Registrarse
+
         </button>
       </form>
       <p style={{ marginTop: '1rem' }}>

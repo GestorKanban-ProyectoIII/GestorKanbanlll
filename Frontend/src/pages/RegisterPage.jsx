@@ -1,34 +1,11 @@
 import { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
-import { authApi } from '../services/api'
 
 export function RegisterPage() {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [error, setError] = useState('')
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const navigate = useNavigate()
 
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-    setError('')
-    if (password.length < 6) {
-      setError('La contraseña debe tener al menos 6 caracteres.')
-      return
-    }
-
-    setIsSubmitting(true)
-    try {
-      await authApi.register({ name, email, password })
-      navigate('/login', { replace: true, state: { message: 'Cuenta creada. Ya puedes iniciar sesión.' } })
-    } catch (requestError) {
-      setError(requestError.response?.status === 409
-        ? 'El email ya está registrado.'
-        : requestError.response?.data?.message || 'No se pudo crear la cuenta.')
-    } finally {
-      setIsSubmitting(false)
-    }
   }
 
   return (
@@ -68,9 +45,7 @@ export function RegisterPage() {
             style={{ width: '100%', padding: '0.5rem' }}
           />
         </div>
-        {error && <p role="alert">{error}</p>}
-        <button type="submit" disabled={isSubmitting} style={{ padding: '0.5rem 1rem' }}>
-          {isSubmitting ? 'Registrando...' : 'Registrarse'}
+
         </button>
       </form>
       <p style={{ marginTop: '1rem' }}>

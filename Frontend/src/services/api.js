@@ -2,14 +2,6 @@ import axios from 'axios'
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000/api'
 
-export const authApi = {
-  login: (credentials) => api.post('/auth/login', credentials),
-  register: (userData) => api.post('/auth/register', userData),
-  profile: () => api.get('/auth/profile'),
-}
-
-export const googleAuthUrl = `${API_BASE_URL}/auth/google`
-
 const api = axios.create({
   baseURL: API_BASE_URL,
   headers: {

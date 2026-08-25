@@ -1,13 +1,25 @@
+<<<<<<< Updated upstream
 import { useState } from 'react'
 import heroImg from './assets/hero.png'
 import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
+=======
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { AuthProvider } from './context/AuthProvider'
+import { ProtectedRoute } from './components/ProtectedRoute'
+import { LoginPage } from './pages/LoginPage'
+import { RegisterPage } from './pages/RegisterPage'
+import { DashboardPage } from './pages/DashboardPage'
+import { NotFoundPage } from './pages/NotFoundPage'
+import { GoogleCallbackPage } from './pages/GoogleCallbackPage'
+>>>>>>> Stashed changes
 import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
+<<<<<<< Updated upstream
     <>
       <section id="center">
         <div className="hero">
@@ -29,6 +41,15 @@ function App() {
           Count is {count}
         </button>
       </section>
+=======
+    <AuthProvider>
+      <BrowserRouter>
+        <Routes>
+          {/* Rutas Públicas */}
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/auth/google/callback" element={<GoogleCallbackPage />} />
+>>>>>>> Stashed changes
 
       <div className="ticks"></div>
 
